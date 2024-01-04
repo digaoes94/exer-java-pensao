@@ -1,0 +1,52 @@
+package general;
+import java.util.Scanner;
+
+public class Locador {
+	static Scanner scan = new Scanner(System.in);
+	
+	private String name;
+	private String email;
+	private double rent;
+	private int room;
+	
+	public Locador(String name, String email, double rent, int room) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.rent = rent;
+		this.room = room;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public double getRent() {
+		return rent;
+	}
+	public void setRent(double rent) {
+		this.rent = rent;
+	}
+	
+	public int getRoom() {
+		return room;
+	}
+	public void setRoom(int room) {
+		this.room = room;
+	}
+	
+	public String toString() {
+		String aux = "O locador do quarto " + this.getRoom() + " se chama " + this.getName() + ". Seu email é " + this.getEmail() + ".\n";
+		return aux;
+	}
+}

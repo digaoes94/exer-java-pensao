@@ -1,0 +1,74 @@
+package general;
+import java.util.Scanner;
+
+public class Main {
+	static Scanner scan = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		int opcao = 0;
+		
+		do {
+			opcao = menu();
+			
+			switch (opcao) {
+				case 1:
+					int aux = 0;
+					System.out.println("Quantas pessoas serão adicionadas?");
+					aux = scan.nextInt();
+					
+					for (int i = 0; i < aux; i++) {
+						String name, email; double rent; int room;
+						
+						System.out.println("Favor digitar o nome do locador:");
+						name = scan.nextLine();
+						System.out.println("Favor digitar o email do locador:");
+						email = scan.nextLine();
+						System.out.println("Favor digitar o valor do aluguel:");
+						rent = scan.nextDouble();
+						System.out.println("Favor digitar o número do quarto:");
+						room = scan.nextInt();
+						
+						Locador L = new Locador(name, email, rent, room);
+						VetQuarto.AdicionarLocador(L);
+					}
+				break;
+				case 2:
+					int aux2 = -1;
+					System.out.println("Qual o quarto do locador a ser removido?");
+					aux2 = scan.nextInt();
+					VetQuarto.RetirarLocador(aux2);
+				break;
+				case 3:
+					int aux3 = -1;
+					System.out.println("Qual o quarto do locador a ser pesquisado?");
+					aux3 = scan.nextInt();
+					VetQuarto.PesquisarLocador(aux3);
+				break;
+				case 4:
+					System.out.println("--- LISTA DE LOCADORES ---");
+					VetQuarto.ListaLocadores();
+				break;
+				case 5:
+					System.out.println("O programa será encerrado.");
+					opcao = 5;
+				break;
+				default:
+					System.out.println("Opção inválida, o programa será encerrado.");
+					opcao = 5;
+			}
+		} while(opcao != 5);
+
+	}
+	
+	public static int menu() {
+		int aux = 0;
+		System.out.println("O que deseja fazer?");
+		System.out.println("Digite 1 para adicionar 1, ou mais, locadores");
+		System.out.println("Digite 2 para remover 1, ou mais, locadores");
+		System.out.println("Digite 3 para ver os dados de 1 locador específico");
+		System.out.println("Digite 4 para ver a lista do locadores atuais");
+		System.out.println("Digite 5 para sair do programa");
+		aux = scan.nextInt();
+		return aux;
+	}
+}

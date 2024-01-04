@@ -1,0 +1,53 @@
+package general;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class VetQuarto {
+	static Scanner scan = new Scanner(System.in);
+	
+	static ArrayList<Locador> quartosInicial = new ArrayList<Locador>();
+	static ArrayList<Locador> quartosFinal = new ArrayList<Locador>();
+	
+	public static void AdicionarLocador(Locador x) {
+		quartosInicial.add(x);
+		arrumar();
+	}
+	
+	public static void RetirarLocador(int aux2) {
+		for (int i = 0; i < quartosInicial.size(); i++) {
+			if (quartosInicial.get(i).getRoom() == aux2) {
+				quartosInicial.remove(quartosInicial.get(i));
+			}
+		}
+		
+		for (int i = 0; i < quartosFinal.size(); i++) {
+			if (quartosFinal.get(i).getRoom() == aux2) {
+				quartosFinal.remove(quartosFinal.get(i));
+			}
+		}
+		
+		arrumar();
+	}
+	
+	public static void PesquisarLocador(int aux3) {
+		quartosFinal.get(aux3).toString();
+	}
+
+	public static void arrumar() {
+		for (int i = 0; i < quartosInicial.size(); i++) {
+			if (quartosInicial.get(i).getRoom() == i) {
+				quartosFinal.add(quartosInicial.get(i));
+			}
+		}
+	}
+	
+	public static void ListaLocadores() {
+		String aux = "";
+		
+		for (int i = 0; i < quartosFinal.size(); i++) {
+			aux += quartosFinal.get(i).toString();
+			System.out.println(aux);
+		}
+	}
+	
+}
